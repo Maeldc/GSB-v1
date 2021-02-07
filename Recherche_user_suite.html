@@ -18,15 +18,35 @@
         </ul>
     </nav>
     <div id="bloc_principal">
-        <div id="bloc_left">
-            
-        </div>
-        <div id="bloc_right">
-            &nbsp;
+        <div class="bloc_recherche">
+            <div class="search_block2">
+                <input type="text" id="location" class="champ" placeholder="   Ville, code postal, région..." name="username" required>
+                <input type="text" id="username" class="champ" placeholder="   Nom du praticien..." name="username" required>
+                <input type="text" id="username" class="champ" placeholder="   Spécialité du praticien..." name="username" required>
+                <a href="Recherche_user_suite.html" class="button_connect" role="button">Rechercher  <b>></b></a>
+                <div id="gif">
+                    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+                    <lottie-player src="https://assets1.lottiefiles.com/temp/lf20_mUSEmR.json"   background="transparent" speed="1"  style="width: 224.08px;  height: 153.85px; margin-left:30px;" loop autoplay></lottie-player>
+                </div>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" id="visite" placeholder="   Déjà visité ?" name="username"><label for="visite">Déjà visité ?</label>
+            </div>
         </div>
     </div>
-    <div id="bloc_principal">
-        
+    <div class="liste_praticiens">
+        <div class="add_praticien">
+            <img class="add" src="images/1486564412-plus_81511.png" alt="ajouter un praticien">
+            Ajouter un praticien
+        </div>
+        <ul class="cartes_praticiens">
+
+        </ul>
+       <!-- <div class="cartes_praticiens">
+
+        </div>-->
+    </div>
+
     </div>
     <footer>
         <div class="text_footer">

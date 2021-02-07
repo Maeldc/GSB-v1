@@ -1,0 +1,134 @@
+.cartes_praticiens{
+    display : flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 16px;
+    padding-bottom: 75px;   
+}
+ul{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.bloc_praticien{
+    width: 269px;
+    height: 200px;
+    left: 36px;
+    top: 408px;
+    font-size: 15px;
+    list-style: none;
+    background: #E4E4E4;
+    border: 2px solid #E4E4E4;
+    box-sizing: border-box;
+    box-shadow: 7px 7px 18px rgb(0 0 0 / 25%);
+    border-radius: 30px;
+    display: flex;
+    padding: 15px;
+    margin: 20px 35px 20px 35px;
+    flex-direction: column;
+}
+h1{
+    text-align: center;
+}
+
+.imgClick{
+    border-radius: 10%;
+    width : 290px;
+}
+.delete{
+    width: 20px;
+    height:20px;
+    margin-left: 5px;
+}
+.update{
+    width: 20px;
+    height:20px;
+}
+.location{
+    width: 17px;
+    height: 17px;
+    margin-right: 15px;
+}
+.bloc_actions{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.bloc_name{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 10px;
+    font-size: 18px;
+    text-align: left;
+    height: auto;
+    align-items: center;
+}
+.bloc_specialite{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 10px;
+    text-align: left;
+    height: 20px;
+    align-items: center;
+}
+.bloc_location{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 10px;
+    text-align: left;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+}
+#space2{
+    height: 15px;
+}
+
+
+/************* POP UPS *************/
+
+/* arriere plan du pop */
+.modal {
+    display: none;
+    position: fixed; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0, 0.5); 
+  }
+  
+  /* le cadre du pop */
+  .modal-content {
+      background-color: #FFFFFF;
+      margin: 120px 460px 0px 460px;
+      padding: 20px;
+      border: 1px solid #5983A4;
+      width: 38%;
+      box-sizing: border-box;
+      border-radius: 63px;
+      height: 600px;
+  }
+  .close {
+    float: right;
+  }
+  /* petite main qui pointe */
+  .close:hover,
+  .close:focus {
+    cursor: pointer;
+  }
+  
+  .update:hover,
+  .update:focus {
+    cursor: pointer;
+  }
+  
+  .exit{
+      margin-right: 15px;
+      width: 20px;
+      height: 20px;
+  }
