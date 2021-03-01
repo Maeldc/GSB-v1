@@ -80,7 +80,7 @@ fetch(url + "?ville=Marseille")
 .then(response => response.json())
 .then((datas) => {
     datas.forEach( (element)=> {
-        console.log('praticiens de Marseille => [' +element.nom+' => '+element.adresse);
+        console.log('praticiens de Marseille => [' +element.nom+' => '+element.adresse+']');
     });
 });
 
