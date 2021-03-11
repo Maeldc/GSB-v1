@@ -1,60 +1,52 @@
-
-/**************** PAGE HTML ***************/ 
 body{
-    margin : 0;
-    padding : 0;
-    background-image: url('images/background.png');
-    background-repeat: no-repeat;
-    font-family: 'Sarabun', sans-serif;
-}
-footer{
-    background:#E8EDEE;
-    bottom:0;
-    width:100%;
-    margin-top:50px;  
-    height:99px;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-a{
-    text-decoration : none;
-}
-
-/**************** BLOC ***************/ 
-#bloc_principal{
-    display: flex;
     width: 100%;
-    justify-content: space-between;
+    height: 100%;
+    font-family: 'Sarabun';
+    background-color: #EEEEEE;
 }
-#bloc_left{
-    width : 45%;
-    height : 550px;
+.body{
+    width: 100%;
+    height: 100%;
+    background-image: url('images/background.png');
+}
+a{
+    text-decoration: none;
+    font-family: 'Sarabun';
+    color : #123E6A !important;
+}
+
+.grand_espace{
+    width: auto;
+    height: 150px;
+}
+/******* page de connexion  *********/
+.bloc_principal{
+    width: 1425px;
+    height: 750px ;
+    display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+    padding: 0px;
+    margin: 0px;
 }
-#bloc_right{
-    width : 45%;
-    height : 550px;
+.bloc_logo_connexion{
+    width: 45%;
+    display: flex;
+    justify-content: center;
 }
-.indentification{
-    width: 430px;
-    height: 521px;
-    background: #FFFFFF;
-    border: 2px solid rgba(57, 88, 98, 0.45);
-    box-sizing: border-box;
-    box-shadow: 13px 15px 53px rgba(0, 0, 0, 0.25);
-    border-radius: 52px;
-    margin-left: 100px;
+.bloc_choix_connexion{
+    width: 55%;
+    display: flex;
     flex-direction: column;
-    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-top: 75px;
 }
-.rectangle_logo{
+.rectangle_logo {
     width: 330px;
     height: 368px;
-    margin-top: 69px;
+    margin-top: 100px;
     margin-left: 80px;
     background: #FFFFFF;
     box-shadow: 11px 10px 14px rgb(0 0 0 / 25%);
@@ -62,52 +54,297 @@ a{
     flex-direction: column;
     text-align: center;
     font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 0px 5px 0px 5px;
 }
-
-/**************** ESPACES ***************/ 
-#espace_left{
-    width : 45%;
-    height: 90px;
+.titre{
+    font-family: Sarabun;
+    font-weight: bold;
+    font-size: 40px;
+    color: #123E6A;
+}
+.choix_connexion{
+    width: 250px;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    background: rgba(102, 163, 211, 0.38);
+    border: 2px solid #000000;
+}
+.image{
+    width: 40%;
+    height: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
-#espace_right{
-    width : 45%;
-    height: 90px;
+.type{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
-#space{
+.avatar_connexion{
+    width: 60px;
     height: 60px;
 }
-#space2{
-    height: 30px;
-    margin: 8px
-}
-
-/**************** PERSONNALISATION ***************/
 .champ{
-    width: 350px;
-    height: 43px;
-    border-radius: 20px;
-    border: 2px solid #5983A4;
+    width: 357px;
+    height: 50px;
+    background: #FFFFFF;
+    border: 3px solid #123E6A;
+    box-sizing: border-box;
+    border-radius: 15px;
+    font-size: 20px !important;
 }
-.titre{
-    font-size: 30px;
-    color : #5983A4;
-}
-
-.text_bleu{
-    color : #5983A4;
-}
-.text_footer{
-    margin: 0;
-}
-
 .button_connect{
-    margin: 40px 40px 40px 40px;
-    padding: 9px 20px 9px 20px;
-    font-size: 17px;
-    border-radius: 20px;
-    border: 2px solid #5983A4;
+    width: 178px;
+    height: 55px;
+    background: #123E6A;
+    border: 1px solid #123E6A;
+    box-sizing: border-box;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white !important;
+}
+a.button_connect:hover{
+    width: 178px;
+    height: 55px;
+    border: 3px solid #123E6A;
+    background-color: #123e6a00;
+    box-sizing: border-box;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #123E6A !important;
+}
+.text_bleu{
+    color : #123E6A;
+}
+
+/************* MENU ******************/
+.menu{
+    width: 25%;
+    height: 1004px;
+    background-color: rgba(18, 62, 106, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.logo{
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 150px;
+}
+.onglet{
+    width: 100%;
+    height: 65px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.miniatures{
+    width: 30%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: self-start;
+    margin-top: 14px;
+}
+.nom_onglet{
+    width: 70%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.bloc_information{
+    width: 75%;
+    height: 828px;
+    display: flex;
+    flex-direction: row;
+}
+.icons{
+    width: 30px;
+    height: 30px;
+}
+.titre_onglet{
+    font-size: 25px;
     color: white;
-    background-color: #5983A4;
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+.mouseover_onglet{ 
+    background: #66A3D3;
+    box-shadow: 0px 4px 53px rgba(0, 0, 0, 0.25);
+}
+/************* contenu ******************/
+
+.space{
+    height: 60px;
+}
+.marge{
+    width: 10%;
+    height: 100%;
+}
+.content{
+    width: 90%;
+    display: flex;
+    margin-top: 75px;
+    flex-direction: column;
+}
+.bloc_titre{
+    width: 100%;;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.titre_infos{
+    width: 50%;
+    height: auto;
+    font-family: 'Sarabun';
+    font-weight: bold;
+    font-size: 30px;
+    color: #123E6A;
+}
+.tous_les_praticiens{
+    width: 50%;
+    height: auto;
+    margin-top: 13px;
+    display: flex;
+    justify-content: flex-end;   
+}
+.lien_praticiens{
+    text-decoration: none;
+    font-family: 'Sarabun';
+    color : #123E6A !important;
+    font-size: 20px;
+    font-weight: 200;
+}
+a.lien_praticiens:hover{
+    text-decoration: none;
+    font-family: 'Sarabun';
+    color : #123E6A !important;
+    font-size: 20px;
+    font-weight: 400;
+}
+.label{
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 25px;
+}
+input#oui {
+    margin-right: 30px;
+    width: 20px;
+    height: 20px;
+}
+input#non {
+    margin-right: 30px;
+    width: 20px;
+    height: 20px;
+}
+.bloc_search{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.button_search{
+    width: 300px;
+    height: 55px;
+    font-size: 20px;
+    background: #123E6A;
+    border: 1px solid #123E6A;
+    box-sizing: border-box;
+    border-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white !important;
+}
+
+/************* carte ******************/
+#list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow: auto;
+    height: 1000px;
+    width: 1000px;
+    margin:0px;
+    padding: 0px;
+}
+.bloc_card{
+    display: flex;
+    justify-content: space-around;
+}
+.card{
+    width: 400px;
+    height: 130px;
+    display: flex;
+    flex-direction: row;
+    background: #FFFFFF;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 23px rgba(0, 0, 0, 0.07);
+    border-radius: 25px;
+    font-size: 20px;
+    margin-bottom: 50px;
+}
+.avatar_card{
+    width: 30%;
+    display: flex;
+    background-color: #EEEEEE;
+    border-radius: 23px 0px 0px 23px;
+    justify-content: center;
+    align-items: center;
+}
+.doctor_card{
+    width: 70px;
+    height: 70px;
+}
+.information_card{
+    width: 70%;
+    display: flex;
+    border-radius: 21px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.information_card2{
+    width: auto;
+    display: flex;
+    border-radius: 21px;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+#specialite{
+    font-size: 17px;
+}
+
+.icon_modif{
+    width: 20px;
+    height: 20px;
+}
+.bloc_modification{
+    width: 50%;
+    display: flex;
+    flex-direction: flex-end;
+    justify-content: flex-start;
 }

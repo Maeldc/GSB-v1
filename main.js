@@ -71,178 +71,300 @@ const DataPraticien = [
     }
 ];
 
-const list = document.querySelector('.cartes_praticiens');
-    DataPraticien.forEach((datas) => {
-        console.log(datas.nom);
-        console.log(datas.prenom);
-        console.log(datas.adresse);
-        console.log(datas.specialite);
+const formulaire = document.getElementById('formulaire');
 
-        list.insertAdjacentHTML('beforeend', `
-            <div class="bloc_praticien">
-              <div class="bloc_actions">
-              <img class="update" src="images/3592815-compose-create-edit-edit-file-office-pencil-writing_107734.png" alt="Modifier un praticien">
-                <div id="myModal" class="modal">
-                  <div class="modal-content">
-                    <span class="close"><img class="exit" src="images/clear.png" alt="quitter"></span>
-                    <br>
-                    <p></p>
-                  </div>
+
+let nomPraticien = document.querySelector('#nom');
+let secteurGeographique = document.querySelector('#secteur');
+let specialitePraticien = document.querySelector('#specialite');
+let valeur;
+
+const liste = document.getElementById('list');
+
+const tousLesPraticiens = document.querySelector('.lien_praticiens');
+
+
+let url = "http://localhost:90/gsb/praticien";
+console.log(nomPraticien);
+
+let rechercher = document.querySelector('.button_search');
+
+let cpt = 0;
+
+
+tousLesPraticiens.addEventListener('click', (event)=>{
+    event.preventDefault();
+
+    formulaire.style.display = "none";
+
+    fetch(url)
+    .then(response => response.json())
+    .then((datas) => {
+        datas.forEach( (element)=> {
+            liste.insertAdjacentHTML('beforeend', `
+                <div class="bloc_card">
+                    <div class="card">
+                        <div class="avatar_card">
+                            <img class="doctor_card" src='images/doctor_carte.png'>
+                        </div>
+                        <div class="information_card">
+                            <div class="information_card2">
+                                <p>Dr. ${element.nom}</p>
+                                <p id="specialite">${element.specialite}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <img class="delete" src="images/delete.png" alt="Supprimer un praticien">
-              </div>
-              <div class="bloc_name">
-                <p><b>Dr. ${datas.nom} ${datas.prenom}</b></p>
-              </div>
-              <div class="bloc_specialite">
-                <p>${datas.specialite}</p>
-              </div>
-              <div id="space2">
-                &nbsp;
-              </div>
-              <div class="bloc_location">
-                <img class="location" src="images/japan.png" alt="${datas.adresse}">
-                <p>à ${datas.adresse}</p>
-              </div>
-            </div> 
-        `);
-        // je recupere le modal
-        let modal = document.querySelector("#myModal");
-        console.log(modal);
-
-        // je recupere le bouton
-        let img = document.querySelector(".update");
-        console.log(img);
-
-        // je lui affecte une action au click
-        img.addEventListener('click', ()=>{
-            modal.style.display = "block";
+            `);
         });
-
-        // Je recupere le span qui contient la croix pour quitter
-        let span = document.getElementsByClassName("exit")[0];
-
-        // quand je click sur la croix je quitte 
-        span.addEventListener('click', ()=>{
-          modal.style.display = "none";
-        });
-        
     });
-
-
-const button = document.querySelector('.button_connect');
-console.log(button);
-
-let mail;
-/*
-
-<div>
-                <img src='${datas.album.cover_medium}' class="imgClick">
-                <br>
-                <p>${datas.title}</p>
-                <br>
-                <audio controls>
-                    <source src="${datas.preview}" type="audio/mpeg">
-                </audio>
-            </div> 
-
-
-button.addEventListener('click', () => {
-    
-    mail = document.querySelector('#username').value;
-    if(mail === "mae.lodico@gmail.com"){
-
-    }
-
-
-    alert('vous avez mis'+mail);
-    console.log(mail);
-
 });
 
-/* const equipes = document.querySelectorAll('ul li');
+let url2= url;
 
-//equipes.style.display = "none";
-console.log(equipes);
-equipes.forEach((equipe) => {
-    if(equipe.innerText === "Leeds"){
-        equipe.style.display = "none";
-    }
-});
+rechercher.addEventListener('click', (event)=>{
+    event.preventDefault();
+    liste.innerHTML = "";
+   //formulaire.style.display = "none";
 
-const img = document.querySelector('img');
+    if (document.getElementById('oui').checked) {
+        visite = document.getElementById('oui').value;
+        console.log(visite);
 
-/* setTimeout(() => {
-    img.style.borderRadius = "50%";
-}, 2000); 
-
-setTimeout(() => {
-    img.classList.add('circle');
-}, 2000); */
-
-///////// recuperer la valur d'un formulaire //////////////
-
-/* const userAge = document.querySelector('#user_input');
-
-console.log(parseInt(userAge.value));
-
-const img = document.querySelector('img');
-const nvlImg = document.querySelector('#sun'); */
-
-/* nvlImg.addEventListener(TYPEEVENT, CALLBACK) */
-
-/* img.addEventListener('click', () => {
-    img.classList.toggle('circle');
-}); */
-
-/* 
-var validClick = 0;
-img.addEventListener('click', () => {
-    if(validClick === 0){
-        validClick = 1;
-        img.classList.add('circle');
+    } else if(document.getElementById('non').checked){
+        visite = document.getElementById('non').value;
+        console.log(visite);
     } else {
-        validClick = 0;
-        img.classList.remove('circle');
+        visite = "";
+        console.log(visite);
     }
-}); */
 
+
+    if(nomPraticien.value !== ''){
+        if(cpt === 0){
+            url2 = url2 + "?nom=" + nomPraticien.value;
+            cpt = 1;
+        } else {
+            url2 = url2 + "&nom=" + nomPraticien.value;
+        }
+    }
+    if(secteurGeographique.value !== ''){
+        if(cpt === 0){
+            url2 = url2 + "?ville=" + secteurGeographique.value;
+            cpt = 1;
+        } else {
+            url2 = url2 + "&ville=" + secteurGeographique.value;
+        }
+    }
+    if(specialitePraticien.value !== ''){
+        if(cpt === 0){
+            url2 = url2 + "?specialite=" + specialitePraticien.value;
+            cpt = 1;
+        } else {
+            url2 = url2 + "&specialite=" + specialitePraticien.value;
+        }
+    }
+    if(visite !== ''){
+        if(cpt === 0){
+            url2 = url2 + "?visite=" + visite;
+            cpt = 1;
+        } else {
+            url2 = url2 + "&visite=" + visite;
+        }
+    }
+
+    fetch(url2)
+    .then(response => response.json())
+    .then((datas) => {
+        datas.forEach( (element)=> {
+                liste.insertAdjacentHTML('beforeend', `
+                    <div class="bloc_card">
+                        <div class="card">
+                            <div class="avatar_card">
+                                <img class="doctor_card" src='images/doctor_carte.png'>
+                            </div>
+                            <div class="information_card">
+                                <div class="information_card2">
+                                    <p>Dr. ${element.nom}</p>
+                                    <p id="specialite">${element.specialite}</p>
+                                    <a id="specialite" href="fiche_praticien.html"> voir plus</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `);
+            console.log('praticiens de  => [' +element.nom+' => '+element.adresse+' '+ element.adresse+ ']');
+        });
+    });
+    console.log(url2);
+    nomPraticien.value = "";
+    secteurGeographique.value = "";
+    specialitePraticien.value = "";
+    visite = "";
+});
 
 /*
-const bodyPage = document.querySelector('body');
-const r = document.querySelector('#rouge');
-const b = document.querySelector('#bleu');
-const v = document.querySelector('#vert');
-
-
-r.addEventListener('mouseover', () => {
-
-    bodyPage.classList.add("rouge");    
-    bodyPage.classList.remove("vert");    
-    bodyPage.classList.remove("bleu");    
-
-});
-
-b.addEventListener('mouseover', () => {
-
-    bodyPage.classList.add("bleu");   
-    bodyPage.classList.remove("vert");    
-    bodyPage.classList.remove("rouge");   
-
-});
-v.addEventListener('mouseover', () => {
-
-    bodyPage.classList.add("vert");   
-    bodyPage.classList.remove("rouge");    
-    bodyPage.classList.remove("bleu");   
-
+fetch(url + "?nom=Marseille")
+.then(response => response.json())
+.then((datas) => {
+    datas.forEach( (element)=> {
+        console.log('praticiens de Marseille => [' +element.nom+' => '+element.adresse+']');
+    });
 });
 
 
-/////////// AUTRE POSSIBILITE ////////
-/* const affichage = () =>{
-    alert('eh Mercééééé');
-}
- 
-nvlImg .addEventListener('click', affichage);*/
-////////////////////////////////////////////
+//Afficher dans la console tous les dentistes de Paris
+
+fetch(url + "?ville=Paris&specialite=Dentiste")
+.then(response => response.json())
+.then((datas) => {
+    datas.forEach( (element)=> {
+        console.log('dentistes de Paris => [' +element.nom+', '+ element.adresse +' '+element.specialite+']');
+    });
+});
+
+
+//Afficher dans la console tous les praticiens qui ont été visité
+
+fetch(url + "?visite=1")
+.then(response => response.json())
+.then((datas) => {
+    datas.forEach( (element)=> {
+        console.log('praticiens qui ont été visité => [' +element.nom+' => '+element.specialite+']');
+    });
+});
+
+
+//Afficher dans la console tous les dentistes de Marseille qui ont été visité
+  
+fetch(url + "?ville=Marseill&specialite=Dentiste&visite=1")
+.then(response => response.json())
+.then((datas) => {
+    datas.forEach( (element)=> {
+        console.log('dentistes de Marseille qui ont été visité => [' +element.nom+' => '+element.specialite+']');
+    });
+});
+
+
+console.log(nomPraticien);
+console.log(secteurGeographique);
+console.log(specialite);
+console.log(visite);
+*/
+
+
+/*********************** COULEUR ONGLETS ***********************/
+
+const ongletMedicament = document.querySelector('#medicaments');
+const addMedicament = document.querySelector('#addmedicament');
+const ongletPraticien = document.querySelector('#praticiens');
+const addPraticien = document.querySelector('#addpraticien');
+const ongletVisiteur = document.querySelector('#visiteurs');
+const addVisiteur = document.querySelector('#addvisiteur');
+const ongletMonCompte = document.querySelector('#compte');
+const ongletDeconnexion = document.querySelector('#deconnexion');
+
+const marge = document.querySelector('.marge');
+const space = document.querySelector('.space');
+
+marge.addEventListener('mouseover', () => {
+    ongletMedicament.classList.remove("mouseover_onglet");    
+    addMedicament.classList.remove("mouseover_onglet");    
+    ongletPraticien.classList.remove("mouseover_onglet"); 
+    addPraticien.classList.remove("mouseover_onglet");    
+    ongletVisiteur.classList.remove("mouseover_onglet"); 
+    addVisiteur.classList.remove("mouseover_onglet");    
+    ongletMonCompte.classList.remove("mouseover_onglet"); 
+    ongletDeconnexion.classList.remove("mouseover_onglet"); 
+});
+space.addEventListener('mouseover', () => {
+    ongletMedicament.classList.remove("mouseover_onglet");    
+    addMedicament.classList.remove("mouseover_onglet");    
+    ongletPraticien.classList.remove("mouseover_onglet"); 
+    addPraticien.classList.remove("mouseover_onglet");    
+    ongletVisiteur.classList.remove("mouseover_onglet"); 
+    addVisiteur.classList.remove("mouseover_onglet");    
+    ongletMonCompte.classList.remove("mouseover_onglet"); 
+    ongletDeconnexion.classList.remove("mouseover_onglet"); 
+});
+
+ongletMedicament.addEventListener('mouseover', () => {
+    ongletMedicament.classList.add("mouseover_onglet");    
+    addMedicament.classList.remove("mouseover_onglet");    
+    ongletPraticien.classList.remove("mouseover_onglet"); 
+    addPraticien.classList.remove("mouseover_onglet");    
+    ongletVisiteur.classList.remove("mouseover_onglet"); 
+    addVisiteur.classList.remove("mouseover_onglet");    
+    ongletMonCompte.classList.remove("mouseover_onglet"); 
+    ongletDeconnexion.classList.remove("mouseover_onglet"); 
+});
+addMedicament.addEventListener('mouseover', () => {
+    ongletMedicament.classList.remove("mouseover_onglet");    
+    addMedicament.classList.add("mouseover_onglet");    
+    ongletPraticien.classList.remove("mouseover_onglet"); 
+    addPraticien.classList.remove("mouseover_onglet");    
+    ongletVisiteur.classList.remove("mouseover_onglet"); 
+    addVisiteur.classList.remove("mouseover_onglet");    
+    ongletMonCompte.classList.remove("mouseover_onglet"); 
+    ongletDeconnexion.classList.remove("mouseover_onglet"); 
+});
+ongletPraticien.addEventListener('mouseover', () => {
+    ongletMedicament.classList.remove("mouseover_onglet");    
+    addMedicament.classList.remove("mouseover_onglet");    
+    ongletPraticien.classList.add("mouseover_onglet"); 
+    addPraticien.classList.remove("mouseover_onglet");    
+    ongletVisiteur.classList.remove("mouseover_onglet"); 
+    addVisiteur.classList.remove("mouseover_onglet");    
+    ongletMonCompte.classList.remove("mouseover_onglet"); 
+    ongletDeconnexion.classList.remove("mouseover_onglet"); 
+});
+addPraticien.addEventListener('mouseover', () => {
+    ongletMedicament.classList.remove("mouseover_onglet");    
+    addMedicament.classList.remove("mouseover_onglet");    
+    ongletPraticien.classList.remove("mouseover_onglet"); 
+    addPraticien.classList.add("mouseover_onglet");    
+    ongletVisiteur.classList.remove("mouseover_onglet"); 
+    addVisiteur.classList.remove("mouseover_onglet");    
+    ongletMonCompte.classList.remove("mouseover_onglet"); 
+    ongletDeconnexion.classList.remove("mouseover_onglet"); 
+});
+ongletVisiteur.addEventListener('mouseover', () => {
+    ongletMedicament.classList.remove("mouseover_onglet");    
+    addMedicament.classList.remove("mouseover_onglet");    
+    ongletPraticien.classList.remove("mouseover_onglet"); 
+    addPraticien.classList.remove("mouseover_onglet");    
+    ongletVisiteur.classList.add("mouseover_onglet"); 
+    addVisiteur.classList.remove("mouseover_onglet");    
+    ongletMonCompte.classList.remove("mouseover_onglet"); 
+    ongletDeconnexion.classList.remove("mouseover_onglet"); 
+});
+addVisiteur.addEventListener('mouseover', () => {
+    ongletMedicament.classList.remove("mouseover_onglet");    
+    addMedicament.classList.remove("mouseover_onglet");    
+    ongletPraticien.classList.remove("mouseover_onglet"); 
+    addPraticien.classList.remove("mouseover_onglet");    
+    ongletVisiteur.classList.remove("mouseover_onglet"); 
+    addVisiteur.classList.add("mouseover_onglet");    
+    ongletMonCompte.classList.remove("mouseover_onglet"); 
+    ongletDeconnexion.classList.remove("mouseover_onglet"); 
+});
+ongletMonCompte.addEventListener('mouseover', () => {
+    ongletMedicament.classList.remove("mouseover_onglet");    
+    addMedicament.classList.remove("mouseover_onglet");    
+    ongletPraticien.classList.remove("mouseover_onglet"); 
+    addPraticien.classList.remove("mouseover_onglet");    
+    ongletVisiteur.classList.remove("mouseover_onglet"); 
+    addVisiteur.classList.remove("mouseover_onglet");    
+    ongletMonCompte.classList.add("mouseover_onglet"); 
+    ongletDeconnexion.classList.remove("mouseover_onglet"); 
+});
+ongletDeconnexion.addEventListener('mouseover', () => {
+    ongletMedicament.classList.remove("mouseover_onglet");    
+    addMedicament.classList.remove("mouseover_onglet");    
+    ongletPraticien.classList.remove("mouseover_onglet"); 
+    addPraticien.classList.remove("mouseover_onglet");    
+    ongletVisiteur.classList.remove("mouseover_onglet"); 
+    addVisiteur.classList.remove("mouseover_onglet");    
+    ongletMonCompte.classList.remove("mouseover_onglet"); 
+    ongletDeconnexion.classList.add("mouseover_onglet"); 
+});

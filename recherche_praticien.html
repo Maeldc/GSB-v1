@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>GSB</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="bloc_principal">
+        <!-- MENU -->
+        <div class="menu">
+            <div class="logo">
+                <img src="images/gsb_index.png">
+            </div>
+            <div class="space">
+                &nbsp;
+            </div>
+            <br>
+            <div id="medicaments" class="onglet">
+                <div class="miniatures">
+                    <img class="icons" src="images/tablet-and-pill.png">
+                </div>
+                <div class="nom_onglet">
+                    <p class="titre_onglet">Médicaments</p>
+                </div>
+            </div>
+            <div id="addmedicament" class="onglet">
+                <div class="miniatures">
+                    <img class="icons" src="images/pharmaceutical-delivery-symbol-with-drugs.png">
+                </div>
+                <div class="nom_onglet">
+                    <p class="titre_onglet">Ajouter médicament</p>
+                </div>
+            </div>
+            <div id="praticiens" class="onglet">
+                <div class="miniatures">
+                    <img class="icons" src="images/doctor.png">
+                </div>
+                <div class="nom_onglet">
+                    <p class="titre_onglet">Praticiens</p>
+                </div>
+            </div>
+            <div id="addpraticien" class="onglet">
+                <div class="miniatures">
+                    <img class="icons" src="images/plus.png">
+                </div>
+                <div class="nom_onglet">
+                    <p class="titre_onglet">Ajouter praticien</p>
+                </div>
+            </div>
+            <div id="visiteurs"  class="onglet">
+                <div class="miniatures">
+                    <img class="icons" src="images/doctor.png">
+                </div>
+                <div class="nom_onglet">
+                    <p class="titre_onglet">Visiteurs</p>
+                </div>
+            </div>
+            <div id="addvisiteur" class="onglet">
+                <div class="miniatures">
+                    <img class="icons" src="images/plus.png">
+                </div>
+                <div class="nom_onglet">
+                    <p class="titre_onglet">Ajouter visiteur</p>
+                </div>
+            </div>
+            <div class="space">
+                &nbsp;
+            </div>
+            <br>
+            <div  id="compte" class="onglet">
+                <div class="miniatures">
+                    <img class="icons" src="images/user.png">
+                </div>
+                <div class="nom_onglet">
+                    <p class="titre_onglet">Mon compte</p>
+                </div>
+            </div>
+            <div id="deconnexion" class="onglet">
+                <div class="miniatures">
+                    <img class="icons" src="images/logout.png">
+                </div>
+                <div class="nom_onglet">
+                    <p class="titre_onglet">Déconnexion</p>
+                </div>
+            </div>
+        </div>
+        <!-- FORMULAIRE -->
+        <div class="bloc_information">
+            <div class="marge">
+
+            </div>
+            <div class="content">
+                <div class="bloc_titre">
+                    <div class="titre_infos">
+                        <p>Rechercher un praticien</p>
+                    </div>
+                    <div class="tous_les_praticiens">
+                        <p><a href="all_praticiens.html" class="lien_praticiens">Voir tous les praticiens  ></a></p>
+                    </div>
+                </div>
+                
+                <form id="formulaire">
+                    <div class="space"></div>
+                    <div class="bloc_titre">
+                        <div class="label">
+                            <p>Nom :</p>
+                        </div>
+                        <div class="label">
+                            <p>Secteur géographique :</p>
+                        </div>
+                    </div>
+                    <div class="bloc_titre">
+                        <div class="label">
+                            <input type="text" id="nom" class="champ" placeholder="  Entrez le nom du praticien">
+                        </div>
+                        <div class="label">
+                            <input type="text" id="secteur" class="champ" placeholder="  Entrez la ville du praticien">
+                        </div>
+                    </div>
+                    <div class="space"></div>
+                    <div class="bloc_titre">
+                        <div class="label">
+                            <p>Spécialité :</p>
+                        </div>
+                        <div class="label">
+                            <p>Déjà visité ?</p>
+                        </div>
+                    </div>
+                    <div class="bloc_titre">
+                        <div class="label">
+                            <input type="text" id="specialite" class="champ" placeholder="  Entrez la spécialité">
+                        </div>
+                        <div class="label" id="visite">
+                            <div class="label">
+                                <input type="radio" id="oui" name="deja_visite" value="1">
+                                <label for="oui">Oui</label>
+                            </div>
+                            <div class="label">
+                                <input type="radio" id="non" name="deja_visite" value="0">
+                                <label for="non">Non</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space"></div>
+                    <div class="bloc_search">
+                        <input type="submit" class="button_search" value="rechercher">
+                    </div>
+                </form>
+                <div class="space"></div>
+                <div class="grand_espace"></div>
+                <ul id="list">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

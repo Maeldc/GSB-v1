@@ -7,47 +7,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Sarabun:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div id="bloc_principal">
-        <div id="espace_left">
-            &nbsp;
+<body class="body">
+    <div class="bloc_principal">
+        <div class="bloc_choix_connexion">
+            <div class="titre">
+                <p>Identification :</p>
+            </div>
+            <input type="text" id="username" class="champ" placeholder="   Entrez le nom d'utilisateur" name="username" required>
+            <br>
+            <br>
+            <input type="password" id="password" class="champ" placeholder="   Entrez le mot de passe" name="password" required>
+            <br>
+            <br>
+            <a href="recherche_praticien.html" class="button_connect" role="button">Se connecter</a>
+            <br>
+            <br>
+            <a class="text_bleu" href="#"><u>Mot de passe oublié ?</u></a>
         </div>
-        <div id="espace_right">
-            &nbsp;
-        </div>
-    </div>
-    <div id="bloc_principal">
-        <div id="bloc_left">
-           <div class="indentification">
-                <div id="space2">&nbsp;</div>
-                <p class="titre"><b>Authentification</b></p>
-                <div id="space2">&nbsp;</div>
-                <input type="text" id="username" class="champ" placeholder="   Entrez le nom d'utilisateur" name="username" required>
-                <div id="space2">&nbsp;</div>
-                <input type="password" id="password" class="champ" placeholder="   Entrez le mot de passe" name="password" required>
-                <div id="space">&nbsp;</div>
-                <a href="Recherche_user.html" class="button_connect" role="button">Se connecter</a>
-                
-                <div id="space2">&nbsp;</div>
-                <a class="text_bleu" href="#"><u>Mot de passe oublié ?</u></a>
-           </div>
-        </div>
-        <div id="bloc_right">
+        <div class="bloc_logo_connexion">
             <div class="rectangle_logo">
                 <div id="space">&nbsp;</div>
                 <img src='images/gsb_index.png'>
                 <p>Parce que votre santé nous est précieuse.</p>
             </div>
         </div>
-    </div>
-    <footer>
-        <div class="text_footer">
-            Terms & Conditions - Privacy Policy
-        </div>
-        <div class="text_footer">
-            Conditions générales d'utilisation - Politique relative à la protection des données personnelles - Politique en matière de cookies - Règles de référencement
-        </div>
-    </footer>
+   </div>
     <script src="main.js"></script>
 </body>
 </html>
