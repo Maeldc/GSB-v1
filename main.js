@@ -1,95 +1,18 @@
-const DataPraticien = [
-    {
-        "id": 1,
-        "nom": "Lee",
-        "prenom": "Bruce",
-        "adresse": "Marseille",
-        "specialite": "ophtalmologue"
-    },
-    {
-        "id": 2,
-        "nom": "Hugo",
-        "prenom": "Victor",
-        "adresse": "Aix-En-Provence",
-        "specialite": "Dentiste"
-    },
-    {
-        "id": 3,
-        "nom": "Mozart",
-        "prenom": "Amadeus",
-        "adresse": "Paris",
-        "specialite": "Dentiste"
-    },
-    {
-        "id": 4,
-        "nom": "Beethoven",
-        "prenom": "Ludwig Von",
-        "adresse": "Nantes",
-        "specialite": "ophtalmologue"
-    },
-    {
-        "id": 5,
-        "nom": "Proust",
-        "prenom": "Marcel",
-        "adresse": "Marseille",
-        "specialite": "Dentiste"
-    },
-    {
-        "id": 6,
-        "nom": "Arouet",
-        "prenom": "François-Marie",
-        "adresse": "Paris",
-        "specialite": "ophtalmologue"
-    },
-    {
-        "id": 7,
-        "nom": "Poquelin",
-        "prenom": "Jean-baptiste",
-        "adresse": "Lille",
-        "specialite": "Dentiste"
-    },
-    {
-        "id": 8,
-        "nom": "Shakespear",
-        "prenom": "William",
-        "adresse": "Paris",
-        "specialite": "Infirmier"
-    },
-    {
-        "id": 9,
-        "nom": "Geldog",
-        "prenom": "Bob",
-        "adresse": "Rouen",
-        "specialite": "Infirmier"
-    },
-    {
-        "id": 10,
-        "nom": "Shakespear",
-        "prenom": "William",
-        "adresse": "Lille",
-        "specialite": "Dentiste"
-    }
-];
-
 const formulaire = document.getElementById('formulaire');
 
 
 let nomPraticien = document.querySelector('#nom');
 let secteurGeographique = document.querySelector('#secteur');
 let specialitePraticien = document.querySelector('#specialite');
-let valeur;
 
 const liste = document.getElementById('list');
 
 const tousLesPraticiens = document.querySelector('.lien_praticiens');
 
 
-let url = "http://localhost:90/gsb/praticien";
-console.log(nomPraticien);
+let url = "http://localhost:90/gsb/praticien?";
 
 let rechercher = document.querySelector('.button_search');
-
-let cpt = 0;
 
 
 tousLesPraticiens.addEventListener('click', (event)=>{
@@ -120,12 +43,9 @@ tousLesPraticiens.addEventListener('click', (event)=>{
     });
 });
 
-let url2= url;
-
 rechercher.addEventListener('click', (event)=>{
     event.preventDefault();
     liste.innerHTML = "";
-   //formulaire.style.display = "none";
 
     if (document.getElementById('oui').checked) {
         visite = document.getElementById('oui').value;
@@ -139,41 +59,20 @@ rechercher.addEventListener('click', (event)=>{
         console.log(visite);
     }
 
-
     if(nomPraticien.value !== ''){
-        if(cpt === 0){
-            url2 = url2 + "?nom=" + nomPraticien.value;
-            cpt = 1;
-        } else {
-            url2 = url2 + "&nom=" + nomPraticien.value;
-        }
-    }
+        url += `nom=${nomPraticien.value}&`;
+         }
     if(secteurGeographique.value !== ''){
-        if(cpt === 0){
-            url2 = url2 + "?ville=" + secteurGeographique.value;
-            cpt = 1;
-        } else {
-            url2 = url2 + "&ville=" + secteurGeographique.value;
-        }
-    }
+        url += `ville=${secteurGeographique.value}&`; 
+    }           
     if(specialitePraticien.value !== ''){
-        if(cpt === 0){
-            url2 = url2 + "?specialite=" + specialitePraticien.value;
-            cpt = 1;
-        } else {
-            url2 = url2 + "&specialite=" + specialitePraticien.value;
-        }
+        url += `specialite=${specialitePraticien.value}&`;
     }
     if(visite !== ''){
-        if(cpt === 0){
-            url2 = url2 + "?visite=" + visite;
-            cpt = 1;
-        } else {
-            url2 = url2 + "&visite=" + visite;
-        }
+        url += `specialite=${visite}&`;
     }
 
-    fetch(url2)
+    fetch(url)
     .then(response => response.json())
     .then((datas) => {
         datas.forEach( (element)=> {
@@ -196,7 +95,8 @@ rechercher.addEventListener('click', (event)=>{
             console.log('praticiens de  => [' +element.nom+' => '+element.adresse+' '+ element.adresse+ ']');
         });
     });
-    console.log(url2);
+    console.log(url);
+    url = "http://localhost:90/gsb/praticien?";
     nomPraticien.value = "";
     secteurGeographique.value = "";
     specialitePraticien.value = "";
